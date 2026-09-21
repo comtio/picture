@@ -1,0 +1,372 @@
+body {
+    font-size: 18px;
+    color: #6c767d;
+    background-color: #ebf1f5;
+    height: 100vh;
+    min-height: 800px;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#sound-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    z-index: 2000;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+#sound-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (min-width: 768px) {
+    #sound-btn {
+        display: block;
+    }
+}
+
+/* ===== 进站加载遮罩 ===== */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(20, 26, 38, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity .6s ease;
+}
+
+#loader.is-hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 贯穿屏幕左右的横线 */
+.loader-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, .45) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.line-top {
+    top: 28%;
+}
+
+.line-bottom {
+    bottom: 28%;
+}
+
+.loader-box {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    padding: 36px 32px 30px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.loader-ring {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 14px;
+}
+
+.loader-ring svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ring-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.18);
+    stroke-width: 6;
+}
+
+.ring-bar {
+    fill: none;
+    stroke: url(#ring-gradient);
+    stroke-width: 6;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset .2s ease, stroke .3s ease;
+}
+
+.ring-bar.is-done {
+    stroke: #a8e6a3;
+}
+
+.loader-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.loader-ring-text.is-done {
+    color: #a8e6a3;
+}
+
+.loader-box h2 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.loader-tip {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 22px;
+    line-height: 1.7;
+}
+
+.loader-tip i {
+    margin-right: 4px;
+}
+
+.loader-progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.loader-progress-bar {
+    width: 0;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #6bb8ff, #3d8bfd);
+    transition: width .2s ease;
+}
+
+#loader-enter {
+    display: none;
+    margin: 18px auto 0;
+    padding: 10px 44px;
+    border: none;
+    border-radius: 24px;
+    background: linear-gradient(90deg, #6bb8ff, #3d8bfd);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(61, 139, 253, 0.45);
+    animation: loader-btn-in .4s ease;
+}
+
+#loader-enter.is-show {
+    display: inline-block;
+}
+
+#loader-enter:hover {
+    filter: brightness(1.08);
+}
+
+@keyframes loader-btn-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: .5em;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h1,
+h4 {
+    color: black;
+}
+
+/*卡片：半透明玻璃效果（手机端与电脑端参数一致）*/
+.card {
+    padding: 80px 80px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn {
+    border-radius: 0;
+    margin: 5px 0;
+    width: 100%;
+    padding: 12px 40px;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-success:hover {
+    box-shadow: 5px -2px 15px 0px rgb(203, 221, 232);
+}
+
+.social {
+    padding-left: 0;
+}
+
+.social li {
+    list-style: none;
+    float: left;
+    margin-right: 15px;
+}
+
+footer p {
+    font-size: 12px;
+}
+
+/*手机端直接使用链接跳转，桌面端用按钮弹层*/
+#kaygb-blog-a,
+#kaygb-mail-a {
+    display: none;
+}
+
+@media (max-width: 1199px) {
+    body {
+        min-height: 600px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h4,
+    p {
+        font-size: 14px;
+    }
+    .card {
+        padding: 50px 50px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    /*手机端不显示背景视频，底层改用随机背景图*/
+    #bg-video {
+        display: none;
+    }
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(https://t.alcy.cc/pc);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
+    .container {
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+        min-height: 100vh;
+        display: flex;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        box-sizing: border-box;
+    }
+    /*手机端不提示背景声音*/
+    .loader-tip {
+        display: none;
+    }
+    /*卡片水平+垂直居中、限宽、圆角浮于背景图之上*/
+    .my-card {
+        max-width: 440px;
+        width: 100%;
+        margin: auto;
+    }
+    .card {
+        padding: 24px 20px;
+        border-radius: 12px;
+    }
+    #kaygb-blog-a,
+    #kaygb-mail-a {
+        display: block;
+    }
+    #kaygb-blog,
+    #kaygb-mail {
+        display: none;
+    }
+}
+
+#aplayer {
+    z-index: 20000000;
+}

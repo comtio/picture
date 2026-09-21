@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>澪小汐 | 个人主页</title>
+    <meta name="description" content="这里是澪小汐的个人主页，目前站长仍在学习中，每天抽出时间来看书学习，励志成为一个技术很牛的程序员。">
+    <meta name="keywords" content="个人主页,程序员">
+    <link rel="icon" type="image/ico" href="https://img.lingxiaoxi.dpdns.org/img/1.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/APlayer.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="https://t.alcy.cc/acg" type="video/mp4">
+    </video>
+    <div id="loader">
+        <div class="loader-line line-top"></div>
+        <div class="loader-line line-bottom"></div>
+        <div class="loader-box">
+            <div class="loader-ring">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#6bb8ff"></stop>
+                            <stop offset="100%" stop-color="#3d8bfd"></stop>
+                        </linearGradient>
+                    </defs>
+                    <circle class="ring-track" cx="50" cy="50" r="42"></circle>
+                    <circle class="ring-bar" id="loader-ring" cx="50" cy="50" r="42"></circle>
+                </svg>
+                <span class="loader-ring-text" id="loader-percent">0%</span>
+            </div>
+            <h2>欢迎进入澪小汐的主页</h2>
+            <p class="loader-tip"><i class="fas fa-volume-up"></i> 提示：进入网站后背景视频会播放声音，请提前调整好设备音量</p>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="loader-bar"></div>
+            </div>
+            <button id="loader-enter" type="button">确定进入</button>
+        </div>
+    </div>
+    <button id="sound-btn" type="button" title="背景声音" aria-label="背景声音开关">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <div id="main" class="container">
+        <div class="row my-card justify-content-center">
+            <div class="col-lg-8 card">
+                <h1>Hi<br>我是澪小汐，这里是我的主页！</h1>
+                <p>很荣幸您能访问我的网站！</p>
+                <p>
+                    澪小汐：<br> 没有人能预知未来  所以只能认真地把握生活中的每个瞬间
+                </p>
+                <p>Catch me:</p>
+                <div class="row">
+                    <button id="kaygb-blog" class="btn btn-primary col-lg-4">BLOG</button>
+                    <a href="https://lingxiaoxi.cn" id="kaygb-blog-a" target="_blank" class="btn btn-primary col-lg-4">BLOG</a>
+                    <a href="https://github.com/comtio" target="_blank" class="btn btn-secondary col-lg-4">GitHub</a>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=shiotsukimio@qq.com" target="_blank" id="kaygb-mail-a" class="btn btn-success col-lg-4">Send a Mail</a>
+                    <button id="kaygb-mail" class="btn btn-success col-lg-4">Send a Mail</button>
+                </div>
+                <h4 class="mt-4">or, keep your eyes on</h4>
+                <ul class="social mt-1">
+                    <li><a href="https://weibo.com/lingxiaoxi"><i class="fab fa-weibo" aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/comtio"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-zhihu" aria-hidden="true"></i></a></li>
+                </ul>
+                <footer>
+                    <p>Copyright 2026 - Now <a href="https://lingxiaoxi.cn" target="_blank">home</a> <a href="http://beian.miit.gov.cn/" target="_blank">豫ICP备19002054号-1</a>
+                        <br> 鸣谢：
+                        <a href="https://lingxiaoxi.cn" target="_blank" rel="nofollow">lingxiaoxi</a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <div id="aplayer" class="aplayer" data-order="random" data-id="20173709" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-volume="0.8"></div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/APlayer.min.js"></script>
+    <script src="assets/js/Meting.min.js"></script>
+    <script src="assets/js/layer.js"></script>
+    <script src="assets/js/v3.js"></script>
+    <script>
+        // 桌面端弹出窗口层（手机端隐藏按钮，直接使用链接跳转）
+        $('#kaygb-blog').on('click', function() {
+            layer.open({
+                type: 2,
+                title: '澪小汐',
+                shadeClose: true,
+                shade: false,
+                maxmin: true,
+                area: ['80%', '100%'],
+                content: '//lingxiaoxi.cn/'
+            });
+        });
+        $('#kaygb-mail').on('click', function() {
+            layer.open({
+                type: 2,
+                title: '澪小汐',
+                shadeClose: true,
+                shade: false,
+                maxmin: true,
+                area: ['80%', '100%'],
+                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=shiotsukimio@qq.com'
+            });
+        });
+
+        // 进站加载遮罩 + 背景视频声音控制
+        $(function() {
+            var bgVideo = document.getElementById('bg-video');
+            var soundBtn = document.getElementById('sound-btn');
+            var soundIcon = soundBtn.querySelector('i');
+            var loader = document.getElementById('loader');
+            var loaderBar = document.getElementById('loader-bar');
+            var loaderPercent = document.getElementById('loader-percent');
+            var loaderRing = document.getElementById('loader-ring');
+            var enterBtn = document.getElementById('loader-enter');
+            var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+            // 进度环周长（与 SVG 圆 r=42 保持一致，唯一常量来源）
+            var RING_CIRC = 2 * Math.PI * 42;
+            loaderRing.style.strokeDasharray = RING_CIRC;
+            loaderRing.style.strokeDashoffset = RING_CIRC;
+
+            // 手机端不出现视频：移除视频源避免下载
+            if (isMobile) {
+                var videoSource = bgVideo.querySelector('source');
+                if (videoSource) {
+                    videoSource.remove();
+                }
+                bgVideo.load();
+            }
+
+            function syncIcon() {
+                soundIcon.className = bgVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            }
+
+            // 进度按 10/30/50/70/90 阶梯推进（每拍 375ms，全程 1.5 秒），资源真正加载完成后才闭合到 100
+            var STAGES = [10, 30, 50, 70, 90];
+            var stageIdx = 0;
+            var pageLoaded = document.readyState === 'complete';
+            var videoCanPlay = isMobile; // 手机端无视频，只需等页面资源
+            var finished = false;
+
+            function renderPct(v) {
+                loaderBar.style.width = v + '%';
+                loaderRing.style.strokeDashoffset = RING_CIRC * (1 - v / 100);
+                loaderPercent.textContent = v + '%';
+            }
+
+            function finish() {
+                if (finished) {
+                    return;
+                }
+                finished = true;
+                clearInterval(stageTimer);
+                renderPct(100);
+                loaderPercent.classList.add('is-done');
+                loaderRing.classList.add('is-done');
+                // 加载完成（圆环闭合）后才出现「确定进入」按钮
+                enterBtn.classList.add('is-show');
+            }
+
+            renderPct(STAGES[0]);
+            var stageTimer = setInterval(function() {
+                if (stageIdx < STAGES.length - 1) {
+                    stageIdx++;
+                    renderPct(STAGES[stageIdx]);
+                } else if (pageLoaded && videoCanPlay) {
+                    // 已在 90 停留一拍且资源就绪，才闭合为 100
+                    finish();
+                }
+            }, 375);
+
+            window.addEventListener('load', function() {
+                pageLoaded = true;
+            });
+
+            if (!isMobile) {
+                // 电脑端：视频就绪（或出错降级）后允许闭合进度
+                ['canplay', 'canplaythrough', 'loadeddata', 'error'].forEach(function(ev) {
+                    bgVideo.addEventListener(ev, function() {
+                        videoCanPlay = true;
+                    });
+                });
+
+                // 视频先静音自动播放（后台预热），点击确定时利用用户手势解除静音
+                bgVideo.muted = true;
+                syncIcon();
+                var prePlay = bgVideo.play();
+                if (prePlay && prePlay.catch) {
+                    prePlay.catch(function() {});
+                }
+            }
+
+            // 兜底：网络异常时最多等待 15 秒，避免一直卡在 90%
+            setTimeout(function() {
+                pageLoaded = true;
+                videoCanPlay = true;
+            }, 15000);
+
+            enterBtn.addEventListener('click', function() {
+                if (!isMobile) {
+                    bgVideo.muted = false;
+                    var promise = bgVideo.play();
+                    if (promise && promise.catch) {
+                        promise.catch(function() {});
+                    }
+                    syncIcon();
+                }
+                loader.classList.add('is-hide');
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 600);
+            });
+
+            // 右上角声音开关
+            soundBtn.addEventListener('click', function() {
+                bgVideo.muted = !bgVideo.muted;
+                if (!bgVideo.muted && bgVideo.paused) {
+                    bgVideo.play();
+                }
+                syncIcon();
+            });
+        });
+    </script>
+</body>
+
+</html>
